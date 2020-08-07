@@ -1,4 +1,4 @@
-# Colored_Object_Tracker
+# Colored Object Tracker
 - Implements a *K-means Clustering algorithm* to track different colored objects
 
 - Desired colors are set to white and everything else is set to black
