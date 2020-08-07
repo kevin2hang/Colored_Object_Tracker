@@ -31,17 +31,17 @@ public class TrackColor implements PixelFilter, Clickable {
 
             for (int r = 0; r < reds.length; r++) {
                 for (int c = 0; c < reds[r].length; c++) {
-                    boolean isColorChanged = false;
+                    boolean isADesiredColor = false;
 
                     for (int i = 0; i < colorsToTrack.size(); i++) {
                         ColorValue color = colorsToTrack.get(i);
                         if (colorDistanceFrom(reds[r][c], greens[r][c], blues[r][c], color.getR(), color.getG(), color.getB()) < threshold) {
                             bwpixels[r][c] = 255;
-                            isColorChanged = true;
+                            isADesiredColor = true;
                         }
                     }
 
-                    if (isColorChanged == false) bwpixels[r][c] = 0;
+                    if (isADesiredColor == false) bwpixels[r][c] = 0;
                 }
             }
             img.setPixels(bwpixels);
@@ -101,7 +101,6 @@ public class TrackColor implements PixelFilter, Clickable {
                 short bwColorVal = currentPixels[r][c];
                 if (bwColorVal >= 240) {
                     Point2 p = new Point2(c, r);
-                    p.setBwColorVal(bwColorVal);
                     points.add(p);
                 }
             }
